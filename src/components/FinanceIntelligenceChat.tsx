@@ -70,7 +70,7 @@ function answerFor(query: string, active: ScreenId): Msg {
     'working-capital': 'You are viewing Working Capital Intelligence. Ask me about DSO, ageing, collections, supplier timing or cash-release scenarios.',
     reconciliation: 'You are viewing Reconciliation Intelligence. Ask me how confidence matching, exception routing and human approval would work.',
     'mission-control': 'You are viewing Agent Mission Control. Ask which agents to activate, what each agent monitors or how human-in-the-loop control works.',
-    treasury: 'You are viewing Cash Intelligence. Ask about store banking, cash visibility, bank charges or liquidity actions.',
+    cashbooks: 'You are viewing Cashbooks & Store Banking. Ask about store deposits, unbanked cash, fleet allocations, bank charges or reconciliation actions.',
   };
   return {
     role: 'assistant', confidence: 84, sources: source,
