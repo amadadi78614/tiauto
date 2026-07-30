@@ -4,16 +4,16 @@ import { initTheme } from './utils/themePref';
 import Landing from './pages/Landing';
 import ExecutiveStory from './pages/ExecutiveStory';
 import AppShell from './components/AppShell';
-import CommandCentre from './pages/CommandCentre';
+import CommandCentreV3 from './pages/CommandCentreV3';
 import ExecutiveFinanceBriefing from './pages/ExecutiveFinanceBriefing';
 import AskFinanceIntelligence from './pages/AskFinanceIntelligence';
-import AgentMissionControl from './pages/AgentMissionControl';
+import AgentMissionControlV3 from './pages/AgentMissionControlV3';
 import DomainIntelligence from './pages/DomainIntelligence';
 import WorkingCapital from './pages/WorkingCapital';
 import FinancialClose from './pages/FinancialClose';
 import Reconciliation from './pages/Reconciliation';
-import CapitalManagement from './pages/CapitalManagement';
-import CashbooksBanking from './pages/CashbooksBanking';
+import TransformationPortfolioV3 from './pages/TransformationPortfolioV3';
+import CashbooksBankingV3 from './pages/CashbooksBankingV3';
 import BoardReporting from './pages/BoardReporting';
 import KnowledgeGraph from './pages/KnowledgeGraph';
 import OperatingModel from './pages/OperatingModel';
@@ -36,27 +36,23 @@ export default function App() {
 
   const renderScreen = () => {
     switch (screen) {
-      case 'command-centre': return <CommandCentre onNavigate={setScreen} />;
+      case 'command-centre': return <CommandCentreV3 onNavigate={setScreen} />;
       case 'briefing': return <ExecutiveFinanceBriefing />;
       case 'ask': return <AskFinanceIntelligence />;
-      case 'mission-control': return <AgentMissionControl />;
+      case 'mission-control': return <AgentMissionControlV3 />;
       case 'domain-intelligence': return <DomainIntelligence onNavigate={setScreen} />;
       case 'working-capital': return <WorkingCapital />;
       case 'financial-close': return <FinancialClose />;
       case 'reconciliation': return <Reconciliation />;
-      case 'capital': return <CapitalManagement />;
-      case 'cashbooks': return <CashbooksBanking />;
+      case 'capital': return <TransformationPortfolioV3 />;
+      case 'cashbooks': return <CashbooksBankingV3 />;
       case 'board-reporting': return <BoardReporting />;
       case 'knowledge-graph': return <KnowledgeGraph />;
       case 'operating-model': return <OperatingModel />;
       case 'roadmap': return <Roadmap />;
-      default: return <CommandCentre onNavigate={setScreen} />;
+      default: return <CommandCentreV3 onNavigate={setScreen} />;
     }
   };
 
-  return (
-    <AppShell active={screen} onNavigate={setScreen}>
-      {renderScreen()}
-    </AppShell>
-  );
+  return <AppShell active={screen} onNavigate={setScreen}>{renderScreen()}</AppShell>;
 }
