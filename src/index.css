@@ -1,0 +1,236 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* Executive Midnight — layered slate/navy, deliberately not black, not white */
+  --efi-bg-0: #0F172A;
+  --efi-bg-1: #111827;
+  --efi-bg-2: #16233A;
+  --efi-navy: #16233A;
+  --efi-blue: #38BDF8;
+  --efi-cyan: #38BDF8;
+  --efi-violet: #A78BFA;
+  --efi-mint: #10B981;
+  --efi-amber: #FACC15;
+  --efi-rose: #FB7185;
+  --efi-ink-0: #F8FAFC;
+  --efi-ink-1: #CBD5E1;
+  --efi-ink-2: #8B9BB4;
+  --efi-glass: rgba(30,41,59,0.72);
+  --efi-glass-strong: rgba(30,41,59,0.86);
+  --efi-border: rgba(255,255,255,0.08);
+  --efi-border-strong: rgba(255,255,255,0.14);
+  --efi-shadow: rgba(0,0,0,0.35);
+
+  /* Theme-aware accent text colors (used in place of literal text-cyan-300 etc.) */
+  --efi-accent-cyan: #67E8F9;
+  --efi-accent-blue: #93C5FD;
+  --efi-accent-emerald: #6EE7B7;
+  --efi-accent-amber: #FCD34D;
+  --efi-accent-rose: #FDA4AF;
+  --efi-accent-violet: #C4B5FD;
+
+  /* Chrome — sidebar / header surfaces */
+  --efi-chrome-bg: #0B1220;
+  --efi-chrome-bg-soft: rgba(11,18,32,0.6);
+}
+
+[data-theme='light'] {
+  /* Powder blue — TiAuto-inspired, deliberately not stark white */
+  --efi-bg-0: #DCE9F2;
+  --efi-bg-1: #E4EEF6;
+  --efi-bg-2: #CFE0EE;
+  --efi-blue: #0072BC;
+  --efi-cyan: #0EA5C4;
+  --efi-violet: #7C5CFF;
+  --efi-mint: #0F9B72;
+  --efi-amber: #B45309;
+  --efi-rose: #E11D48;
+  --efi-ink-0: #0B1220;
+  --efi-ink-1: #3E5771;
+  --efi-ink-2: #6C87A0;
+  --efi-glass: rgba(255,255,255,0.6);
+  --efi-glass-strong: rgba(255,255,255,0.8);
+  --efi-border: #B9D3E5;
+  --efi-border-strong: rgba(15,45,74,0.18);
+  --efi-shadow: rgba(15,45,74,0.12);
+
+  --efi-accent-cyan: #0E7490;
+  --efi-accent-blue: #0072BC;
+  --efi-accent-emerald: #047857;
+  --efi-accent-amber: #B45309;
+  --efi-accent-rose: #BE123C;
+  --efi-accent-violet: #6D28D9;
+
+  --efi-chrome-bg: #EAF2F8;
+  --efi-chrome-bg-soft: rgba(234,242,248,0.88);
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+  background: var(--efi-bg-0);
+  color: var(--efi-ink-0);
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.font-display { font-family: 'Space Grotesk', 'Inter', sans-serif; }
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+/* Executive Midnight app background — used by the app shell (post-landing) */
+.efi-app-canvas {
+  background:
+    radial-gradient(ellipse 75% 55% at 15% -10%, rgba(56,189,248,0.14), transparent 60%),
+    radial-gradient(ellipse 65% 50% at 100% 0%, rgba(16,185,129,0.08), transparent 60%),
+    radial-gradient(ellipse 55% 55% at 50% 115%, rgba(167,139,250,0.09), transparent 60%),
+    linear-gradient(180deg, var(--efi-bg-1), var(--efi-bg-0) 45%, var(--efi-bg-2));
+}
+
+[data-theme='light'] .efi-app-canvas {
+  background:
+    radial-gradient(ellipse 75% 55% at 15% -10%, rgba(0,102,204,0.07), transparent 60%),
+    radial-gradient(ellipse 65% 50% at 100% 0%, rgba(14,165,196,0.07), transparent 60%),
+    radial-gradient(ellipse 55% 55% at 50% 115%, rgba(124,92,255,0.05), transparent 60%),
+    linear-gradient(180deg, var(--efi-bg-1), var(--efi-bg-0) 45%, var(--efi-bg-2));
+}
+
+.efi-glass {
+  background: var(--efi-glass);
+  border: 1px solid var(--efi-border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.03) inset, 0 20px 44px -22px var(--efi-shadow);
+}
+
+.efi-glass-strong {
+  background: var(--efi-glass-strong);
+  border: 1px solid var(--efi-border-strong);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 26px 54px -22px var(--efi-shadow);
+}
+
+.efi-text-gradient {
+  background: linear-gradient(90deg, #F8FAFC 0%, #93C5FD 45%, #38BDF8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.efi-glow-blue { box-shadow: 0 0 54px -14px rgba(56,189,248,0.5); }
+.efi-glow-cyan { box-shadow: 0 0 54px -14px rgba(56,189,248,0.45); }
+.efi-glow-violet { box-shadow: 0 0 54px -14px rgba(167,139,250,0.42); }
+
+.efi-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--efi-border-strong), transparent);
+}
+
+/* ---- Cinematic classes — Landing + Executive Story intro (deepest layer, distinct from app shell) ---- */
+.efi-bg-cinematic {
+  background:
+    radial-gradient(ellipse 80% 60% at 20% -10%, rgba(56,189,248,0.2), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 100% 10%, rgba(56,189,248,0.12), transparent 60%),
+    radial-gradient(ellipse 60% 60% at 50% 120%, rgba(167,139,250,0.12), transparent 60%),
+    linear-gradient(180deg, #05070D, #0B1220 45%, #111827);
+}
+
+.efi-glass-cinematic {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(148,197,255,0.28);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.efi-text-gradient-cinematic {
+  background: linear-gradient(90deg, #F8FAFC 0%, #C9DBFF 45%, #38BDF8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes efi-pulse-ring {
+  0% { transform: scale(0.85); opacity: 0.9; }
+  70% { transform: scale(1.6); opacity: 0; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+.efi-pulse-ring { animation: efi-pulse-ring 2.6s cubic-bezier(0.2,0.6,0.3,1) infinite; }
+
+@keyframes efi-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+.efi-float { animation: efi-float 5.5s ease-in-out infinite; }
+
+@keyframes efi-shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.efi-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(56,189,248,0.3) 50%, transparent 100%);
+  background-size: 400px 100%;
+  animation: efi-shimmer 2.2s linear infinite;
+}
+
+@keyframes efi-listen-pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(251,113,133,0.35); }
+  50% { transform: scale(1.06); box-shadow: 0 0 0 8px rgba(251,113,133,0); }
+}
+.efi-listen-pulse { animation: efi-listen-pulse 1.6s ease-in-out infinite; }
+
+@keyframes efi-send-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(56,189,248,0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(56,189,248,0); }
+}
+.efi-send-pulse { animation: efi-send-pulse 1.8s ease-in-out infinite; }
+
+.efi-scrollbar-none::-webkit-scrollbar { display: none; }
+.efi-scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Breathing aurora blobs — slow, barely-perceptible drift behind the app shell */
+@keyframes efi-drift-a {
+  0%, 100% { transform: translate(-6%, -4%) scale(1); opacity: 0.9; }
+  50% { transform: translate(4%, 6%) scale(1.15); opacity: 1; }
+}
+@keyframes efi-drift-b {
+  0%, 100% { transform: translate(5%, 3%) scale(1.05); opacity: 0.8; }
+  50% { transform: translate(-5%, -6%) scale(0.95); opacity: 1; }
+}
+@keyframes efi-drift-c {
+  0%, 100% { transform: translate(0%, 0%) scale(1); opacity: 0.7; }
+  50% { transform: translate(3%, -4%) scale(1.1); opacity: 0.95; }
+}
+.efi-aurora-a { animation: efi-drift-a 26s ease-in-out infinite; }
+.efi-aurora-b { animation: efi-drift-b 32s ease-in-out infinite; }
+.efi-aurora-c { animation: efi-drift-c 38s ease-in-out infinite; }
+
+/* Fine film-grain texture — pure CSS/SVG, no image asset, ~2.5% opacity */
+.efi-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  mix-blend-mode: overlay;
+}
+
+@keyframes efi-magnetic-glow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
